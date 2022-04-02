@@ -1,7 +1,21 @@
 {
-	"name": "svelte-app",
+	"name": "read-vietnamese-number-web",
 	"version": "1.0.0",
+	"description": "Web demo for read-vietnamese-number library",
 	"private": true,
+	"author": {
+		"name": "Tong Hoang Vu",
+		"email": "tonghoangvu@outlook.com",
+		"url": "https://github.com/tonghoangvu"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/tonghoangvu/read-vietnamese-number-web.git"
+	},
+	"bugs": {
+		"url": "https://github.com/tonghoangvu/read-vietnamese-number-web/issues"
+	},
+	"homepage": "https://github.com/tonghoangvu/read-vietnamese-number-web#readme",
 	"scripts": {
 		"build": "rollup -c",
 		"dev": "rollup -c -w",
