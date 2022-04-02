@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"description": "Web demo for read-vietnamese-number library",
 	"private": true,
+	"license": "MIT",
 	"author": {
 		"name": "Tong Hoang Vu",
 		"email": "tonghoangvu@outlook.com",
