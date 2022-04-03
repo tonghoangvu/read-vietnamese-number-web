@@ -18,6 +18,7 @@
 	},
 	"homepage": "https://github.com/tonghoangvu/read-vietnamese-number-web#readme",
 	"scripts": {
+		"clean": "rimraf public/build/",
 		"build": "rollup -c",
 		"dev": "rollup -c -w",
 		"start": "sirv public --no-clear",
@@ -38,6 +39,7 @@
 		"eslint-plugin-svelte3": "^3.4.1",
 		"prettier": "^2.6.2",
 		"prettier-plugin-svelte": "^2.6.0",
+		"rimraf": "^3.0.2",
 		"rollup": "^2.3.4",
 		"rollup-plugin-css-only": "^3.1.0",
 		"rollup-plugin-livereload": "^2.0.0",
