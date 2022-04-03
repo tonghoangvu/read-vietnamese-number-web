@@ -1,34 +1,38 @@
-import svelte from 'rollup-plugin-svelte';
-import commonjs from '@rollup/plugin-commonjs';
-import resolve from '@rollup/plugin-node-resolve';
-import livereload from 'rollup-plugin-livereload';
-import { terser } from 'rollup-plugin-terser';
-import sveltePreprocess from 'svelte-preprocess';
-import typescript from '@rollup/plugin-typescript';
-import css from 'rollup-plugin-css-only';
-import replace from '@rollup/plugin-replace';
+import svelte from 'rollup-plugin-svelte'
+import commonjs from '@rollup/plugin-commonjs'
+import resolve from '@rollup/plugin-node-resolve'
+import livereload from 'rollup-plugin-livereload'
+import { terser } from 'rollup-plugin-terser'
+import sveltePreprocess from 'svelte-preprocess'
+import typescript from '@rollup/plugin-typescript'
+import css from 'rollup-plugin-css-only'
+import replace from '@rollup/plugin-replace'
 
-const production = !process.env.ROLLUP_WATCH;
+const production = !process.env.ROLLUP_WATCH
 
 function serve() {
-	let server;
+	let server
 
 	function toExit() {
-		if (server) server.kill(0);
+		if (server) server.kill(0)
 	}
 
 	return {
 		writeBundle() {
-			if (server) return;
-			server = require('child_process').spawn('npm', ['run', 'start', '--', '--dev'], {
-				stdio: ['ignore', 'inherit', 'inherit'],
-				shell: true
-			});
+			if (server) return
+			server = require('child_process').spawn(
+				'npm',
+				['run', 'start', '--', '--dev'],
+				{
+					stdio: ['ignore', 'inherit', 'inherit'],
+					shell: true,
+				},
+			)
 
-			process.on('SIGTERM', toExit);
-			process.on('exit', toExit);
-		}
-	};
+			process.on('SIGTERM', toExit)
+			process.on('exit', toExit)
+		},
+	}
 }
 
 export default {
@@ -37,7 +41,7 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/build/bundle.js'
+		file: 'public/build/bundle.js',
 	},
 	plugins: [
 		// Replace environment variables in source code
@@ -46,16 +50,17 @@ export default {
 			preventAssignment: true,
 			values: {
 				'process.env.NODE_ENV': JSON.stringify(
-					production ? 'production' : 'development')
-			}
+					production ? 'production' : 'development',
+				),
+			},
 		}),
 
 		svelte({
 			preprocess: sveltePreprocess({ sourceMap: !production }),
 			compilerOptions: {
 				// enable run-time checks when not in production
-				dev: !production
-			}
+				dev: !production,
+			},
 		}),
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
@@ -68,12 +73,12 @@ export default {
 		// https://github.com/rollup/plugins/tree/master/packages/commonjs
 		resolve({
 			browser: true,
-			dedupe: ['svelte']
+			dedupe: ['svelte'],
 		}),
 		commonjs(),
 		typescript({
 			sourceMap: !production,
-			inlineSources: !production
+			inlineSources: !production,
 		}),
 
 		// In dev mode, call `npm run start` once
@@ -86,9 +91,9 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		production && terser()
+		production && terser(),
 	],
 	watch: {
-		clearScreen: false
-	}
-};
+		clearScreen: false,
+	},
+}
