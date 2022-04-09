@@ -1,0 +1,8 @@
+body {
+	padding: 5vw 0;
+}
+
+* {
+	font-family: 'Mali', cursive !important; /* To override Paper.CSS style */
+	font-size: 18px;
+}

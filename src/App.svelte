@@ -1,14 +1,17 @@
 <script lang="ts">
-	const NODE_ENV: string = process.env.NODE_ENV ?? ''
+	import Page from './component/Page.svelte'
+	import Footer from './component/Footer.svelte'
 </script>
 
-<p>Web demo read-vietnamese-number</p>
-<p>{NODE_ENV}</p>
-<p>
-	<a target="_blank" href="https://icons8.com/icon/FDoWrXB7G9Rc/99">99</a>
-	icon by <a target="_blank" href="https://icons8.com">Icons8</a>
-</p>
-<button>Click me</button>
+<div class="container paper">
+	<h3 class="text-secondary margin">Page title</h3>
+	<Page />
+	<hr class="margin-bottom-large" />
+	<Footer />
+</div>
 
 <style>
+	h3 {
+		text-align: center;
+	}
 </style>
