@@ -12,6 +12,7 @@
 
 	function changeTab() {
 		store.activeTab.set(tab)
+		localStorage.setItem('active-tab', tab)
 	}
 </script>
 
