@@ -6,10 +6,11 @@
 </script>
 
 <div class="row flex-center tabs">
-	<Tab id="tab1" name="tabs" text="Demo" checked />
-	<Tab id="tab2" name="tabs" text="Options" />
-	<Tab id="tab3" name="tabs" text="About" />
+	<Tab id="tab1" name="tabs" text="Demo" tab="demo" />
+	<Tab id="tab2" name="tabs" text="Options" tab="option" />
+	<Tab id="tab3" name="tabs" text="About" tab="about" />
 
+	<!-- Render all pages, but let Paper.css active one -->
 	<div class="content" id="content1">
 		<DemoPage />
 	</div>
