@@ -2,6 +2,11 @@ body {
 	padding: 5vw 0;
 }
 
+html {
+	/* Fix Paper.css doesn't have background color */
+	background-color: var(--main-background);
+}
+
 * {
 	font-family: 'Mali', cursive !important; /* To override Paper.CSS style */
 	font-size: 18px;
