@@ -5,7 +5,7 @@
 	import * as store from './store/index'
 
 	let activeTab: string
-	store.activeTab.subscribe((value) => activeTab = value)
+	store.activeTab.subscribe((value) => (activeTab = value))
 
 	const TITLE_MAP = new Map([
 		['demo', 'Live demo'],
