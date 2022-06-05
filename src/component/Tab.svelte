@@ -7,8 +7,9 @@
 	export let tab: string
 
 	let activeTab: string
-	$: isActive = tab === activeTab
 	store.activeTab.subscribe((value) => (activeTab = value))
+
+	$: isActive = tab === activeTab
 
 	function changeTab() {
 		store.activeTab.set(tab)

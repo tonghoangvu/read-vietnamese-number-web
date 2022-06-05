@@ -7,34 +7,31 @@
 		UnitNotEnoughError,
 	} from 'read-vietnamese-number'
 
+	import State from '../common/State'
 	import * as store from '../store/index'
 
-	let number: string | null = null
+	let state = State.EMPTY
+	let number = ''
+	let message = ''
 	let readingConfig: ReadingConfig
 	store.readingConfig.subscribe((value) => (readingConfig = value))
 
-	$: ok = number !== null && isValid(number)
-	$: message = read(number)
-
-	function isValid(number: string): boolean {
-		return !Number.isNaN(parseFloat(number))
-	}
-
-	function read(number: string | null): string {
-		if (number === null || !isValid(number)) {
-			return 'Enter a valid number'
+	function read(): void {
+		if (number === '') {
+			state = State.EMPTY
+			return
 		}
 		try {
-			// Number is string, but typeof number is number
-			// So need to cast to string here to avoid error
-			const numberData = parseNumberData(readingConfig, number.toString())
-			return readNumber(readingConfig, numberData)
+			const numberData = parseNumberData(readingConfig, number)
+			state = State.OK
+			message = readNumber(readingConfig, numberData)
 		} catch (ex) {
-			return handleError(ex)
+			state = State.ERROR
+			message = getErrorMessage(ex)
 		}
 	}
 
-	function handleError(ex: unknown): string {
+	function getErrorMessage(ex: unknown): string {
 		if (ex instanceof InvalidNumberError) {
 			return 'Invalid number'
 		}
@@ -49,15 +46,17 @@
 	<div class="row flex-center">
 		<div class="col">
 			<label for="num">Enter a number</label>
+			<!-- Don't use numberic input -->
 			<input
 				id="num"
-				type="number"
 				placeholder="How about -3.14"
-				bind:value="{number}" />
+				bind:value="{number}"
+				on:input="{read}" />
 			<div
 				class="margin-top margin-bottom-none text-center alert"
-				class:alert-success="{ok}"
-				class:alert-warning="{!ok}">
+				hidden="{state === State.EMPTY}"
+				class:alert-success="{state === State.OK}"
+				class:alert-warning="{state === State.ERROR}">
 				{message}
 			</div>
 		</div>
