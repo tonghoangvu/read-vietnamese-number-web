@@ -26,6 +26,9 @@
 				// Disable rules for process.env
 				"no-undef": "off",
 
+				// Disable false warnings on Svelte reactive declarations
+				"@typescript-eslint/no-unused-vars": "off",
+
 				// Prevent ESLint from adding trailing comma like this {VAR,}
 				// Let Prettier handle this
 				"comma-dangle": ["error", "only-multiline"]
