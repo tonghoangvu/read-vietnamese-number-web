@@ -3,6 +3,8 @@ body {
 }
 
 html {
+	scroll-behavior: smooth;
+
 	/* Fix Paper.css doesn't have background color */
 	background-color: var(--main-background);
 

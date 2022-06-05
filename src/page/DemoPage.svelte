@@ -16,6 +16,11 @@
 	let readingConfig: ReadingConfig
 	store.readingConfig.subscribe((value) => (readingConfig = value))
 
+	function startInput() {
+		// Smooth scroll by CSS
+		document.getElementById('num')?.scrollIntoView()
+	}
+
 	function read(): void {
 		if (number === '') {
 			state = State.EMPTY
@@ -52,6 +57,7 @@
 					id="num"
 					placeholder="How about -3.14"
 					bind:value="{number}"
+					on:focus="{startInput}"
 					on:input="{read}" />
 			</div>
 			<div
