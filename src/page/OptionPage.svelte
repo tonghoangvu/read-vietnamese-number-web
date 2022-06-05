@@ -1,11 +1,8 @@
 <script lang="ts"></script>
 
 <main>
-	<p>Options page</p>
+	<p class="text-center">Options page</p>
 </main>
 
 <style>
-	p {
-		text-align: center;
-	}
 </style>

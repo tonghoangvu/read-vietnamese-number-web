@@ -21,5 +21,3 @@
 		<AboutPage />
 	</div>
 </div>
-
-<style></style>

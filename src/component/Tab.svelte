@@ -20,5 +20,3 @@
 <!-- Prevent default to avoid changing tab on click -->
 <input type="radio" id="{id}" name="{name}" checked="{isActive}" />
 <label for="{id}" on:click|preventDefault="{changeTab}">{text}</label>
-
-<style></style>
