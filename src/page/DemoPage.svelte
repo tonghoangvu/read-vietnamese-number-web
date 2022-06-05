@@ -45,13 +45,15 @@
 <main>
 	<div class="row flex-center">
 		<div class="col">
-			<label for="num">Enter a number</label>
-			<!-- Don't use numberic input -->
-			<input
-				id="num"
-				placeholder="How about -3.14"
-				bind:value="{number}"
-				on:input="{read}" />
+			<div class="row flex-center">
+				<label for="num">Enter a number</label>
+				<!-- Don't use numberic input -->
+				<input
+					id="num"
+					placeholder="How about -3.14"
+					bind:value="{number}"
+					on:input="{read}" />
+			</div>
 			<div
 				class="margin-top margin-bottom-none text-center alert"
 				hidden="{state === State.EMPTY}"

@@ -5,6 +5,9 @@ body {
 html {
 	/* Fix Paper.css doesn't have background color */
 	background-color: var(--main-background);
+
+	/* Prevent content jumping */
+	scrollbar-gutter: stable;
 }
 
 * {
