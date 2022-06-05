@@ -1,5 +1,17 @@
 <script lang="ts">
+	import {
+		InvalidNumberError,
+		parseNumberData,
+		ReadingConfig,
+		readNumber,
+		UnitNotEnoughError,
+	} from 'read-vietnamese-number'
+
+	import * as store from '../store/index'
+
 	let number: string | null = null
+	let readingConfig: ReadingConfig
+	store.readingConfig.subscribe((value) => (readingConfig = value))
 
 	$: ok = number !== null && isValid(number)
 	$: message = read(number)
@@ -12,7 +24,24 @@
 		if (number === null || !isValid(number)) {
 			return 'Enter a valid number'
 		}
-		return number
+		try {
+			// Number is string, but typeof number is number
+			// So need to cast to string here to avoid error
+			const numberData = parseNumberData(readingConfig, number.toString())
+			return readNumber(readingConfig, numberData)
+		} catch (ex) {
+			return handleError(ex)
+		}
+	}
+
+	function handleError(ex: unknown): string {
+		if (ex instanceof InvalidNumberError) {
+			return 'Invalid number'
+		}
+		if (ex instanceof UnitNotEnoughError) {
+			return 'Unit not enough'
+		}
+		return 'Unknown error'
 	}
 </script>
 
