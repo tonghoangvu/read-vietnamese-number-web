@@ -9,6 +9,7 @@ import css from 'rollup-plugin-css-only'
 import replace from '@rollup/plugin-replace'
 
 const production = !process.env.ROLLUP_WATCH
+const appVersion = require('./package.json').version
 
 function serve() {
 	let server
@@ -52,6 +53,7 @@ export default {
 				'process.env.NODE_ENV': JSON.stringify(
 					production ? 'production' : 'development',
 				),
+				'process.env.APP_VERSION': JSON.stringify(appVersion),
 			},
 		}),
 

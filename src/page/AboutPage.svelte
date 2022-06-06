@@ -1,4 +1,6 @@
 <script lang="ts">
+	const APP_VERSION: string = process.env.APP_VERSION ?? ''
+
 	function toggleDarkMode() {
 		document.querySelector('html')?.classList.toggle('dark')
 	}
@@ -9,7 +11,15 @@
 		<div class="col text-center">
 			<figure class="margin-none">
 				<img src="/favicon.png" alt="Read Vietnamese Number logo" />
-				<figcaption class="margin-top-small">Version 0.0</figcaption>
+				{#if APP_VERSION === ''}
+					<figcaption class="margin-top-small">
+						Unknown version
+					</figcaption>
+				{:else}
+					<figcaption class="margin-top-small">
+						Version {APP_VERSION}
+					</figcaption>
+				{/if}
 			</figure>
 			<h4 class="margin-top margin-bottom">Read Vietnamese Number</h4>
 			<p>
