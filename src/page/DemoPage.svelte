@@ -1,10 +1,12 @@
 <script lang="ts">
 	import {
+		InvalidFormatError,
 		InvalidNumberError,
-		parseNumberData,
-		ReadingConfig,
-		readNumber,
 		UnitNotEnoughError,
+		ReadingConfig,
+		validateNumber,
+		parseNumberData,
+		readNumber,
 	} from 'read-vietnamese-number'
 
 	import State from '../common/State'
@@ -27,7 +29,8 @@
 			return
 		}
 		try {
-			const numberData = parseNumberData(readingConfig, number)
+			const validatedNumber = validateNumber(number)
+			const numberData = parseNumberData(readingConfig, validatedNumber)
 			state = State.OK
 			message = readNumber(readingConfig, numberData)
 		} catch (ex) {
@@ -37,12 +40,17 @@
 	}
 
 	function getErrorMessage(ex: unknown): string {
+		if (ex instanceof InvalidFormatError) {
+			return 'Invalid format'
+		}
 		if (ex instanceof InvalidNumberError) {
 			return 'Invalid number'
 		}
 		if (ex instanceof UnitNotEnoughError) {
 			return 'Unit not enough'
 		}
+		// eslint-disable-next-line no-console
+		console.error(ex)
 		return 'Unknown error'
 	}
 </script>
