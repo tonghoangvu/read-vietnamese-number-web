@@ -49,7 +49,7 @@
 
 <main>
 	<div class="row flex-center">
-		<div class="col">
+		<div class="col text-center">
 			<div class="row flex-center">
 				<label for="num">Enter a number</label>
 				<!-- Don't use numberic input -->
@@ -61,7 +61,7 @@
 					on:input="{read}" />
 			</div>
 			<div
-				class="margin-top margin-bottom-none text-center alert"
+				class="margin-top margin-bottom-none alert"
 				hidden="{state === State.EMPTY}"
 				class:alert-success="{state === State.OK}"
 				class:alert-warning="{state === State.ERROR}">
@@ -70,7 +70,7 @@
 		</div>
 	</div>
 	<div class="row flex-center">
-		<div class="col">
+		<div class="col row flex-center">
 			<button disabled class="btn-secondary">Add to favorite</button>
 			<button disabled>Clear all</button>
 		</div>
@@ -84,9 +84,5 @@
 
 	main input {
 		display: unset;
-	}
-
-	label {
-		padding-left: unset;
 	}
 </style>

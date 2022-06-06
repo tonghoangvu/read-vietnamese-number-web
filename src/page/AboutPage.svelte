@@ -43,7 +43,7 @@
 		</div>
 	</div>
 	<div class="row flex-center">
-		<div class="col">
+		<div class="col row flex-center">
 			<button on:click="{toggleDarkMode}">Toggle dark mode</button>
 		</div>
 	</div>
