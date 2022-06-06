@@ -50,7 +50,7 @@
 <main>
 	<div class="row flex-center">
 		<div class="col text-center">
-			<div class="row flex-center">
+			<div class="row flex-center flex-middle input-space">
 				<label for="num">Enter a number</label>
 				<!-- Don't use numberic input -->
 				<input
@@ -80,6 +80,15 @@
 <style>
 	.row {
 		margin-bottom: unset;
+	}
+
+	.input-space {
+		gap: 0.75rem;
+	}
+
+	label {
+		/* Don't use padding-none class, it will be overrided */
+		padding: 0;
 	}
 
 	main input {
