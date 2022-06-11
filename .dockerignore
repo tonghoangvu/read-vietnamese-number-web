@@ -1,0 +1,4 @@
+# Never copy these folders
+.vscode/
+node_modules/
+private/
