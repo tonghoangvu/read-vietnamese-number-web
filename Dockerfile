@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # Use LTS version
-FROM node:17-alpine AS build
+FROM node:16.17.0-alpine AS build
 WORKDIR /app
 COPY package*.json ./
 
