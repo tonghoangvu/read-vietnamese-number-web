@@ -5,9 +5,9 @@
 	},
 	"extends": [
 		"eslint:recommended",
-		"prettier",
 		"plugin:@typescript-eslint/recommended",
-		"plugin:@typescript-eslint/recommended-requiring-type-checking"
+		"plugin:@typescript-eslint/recommended-requiring-type-checking",
+		"prettier"
 	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
@@ -25,6 +25,9 @@
 			"rules": {
 				// Disable rules for process.env
 				"no-undef": "off",
+
+				// Disable false warnings on Svelte reactive declarations
+				"@typescript-eslint/no-unused-vars": "off",
 
 				// Prevent ESLint from adding trailing comma like this {VAR,}
 				// Let Prettier handle this
@@ -52,7 +55,8 @@
 		"eol-last": ["error", "always"],
 		"comma-dangle": ["error", "always-multiline"],
 		"array-bracket-spacing": ["error", "never"],
-		"object-curly-spacing": ["error", "always"]
+		"object-curly-spacing": ["error", "always"],
+		"arrow-parens": ["error", "always"]
 	},
 	"settings": {
 		"svelte3/typescript": true

@@ -1,9 +1,23 @@
 <script lang="ts">
-	const NODE_ENV: string = process.env.NODE_ENV ?? ''
+	import Page from './component/Page.svelte'
+	import Footer from './component/Footer.svelte'
+
+	import * as store from './store/index'
+
+	let activeTab: string
+	store.activeTab.subscribe((value) => (activeTab = value))
+
+	const TITLE_MAP = new Map([
+		['demo', 'Live demo'],
+		['option', 'Options'],
+		['about', 'About app'],
+	])
+	$: title = TITLE_MAP.get(activeTab) ?? 'Not found'
 </script>
 
-<p>Web demo read-vietnamese-number</p>
-<p>{NODE_ENV}</p>
-
-<style>
-</style>
+<div class="container paper">
+	<h3 class="text-secondary text-center margin">{title}</h3>
+	<Page />
+	<hr class="margin-bottom-large" />
+	<Footer />
+</div>

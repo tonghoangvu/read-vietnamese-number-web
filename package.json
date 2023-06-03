@@ -21,7 +21,7 @@
 		"clean": "rimraf public/build/",
 		"build": "rollup -c",
 		"dev": "rollup -c -w",
-		"start": "sirv public --no-clear",
+		"start": "sirv public --no-clear --host",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"lint": "eslint --fix src/**/*.{ts,svelte}",
 		"format": "prettier --plugin-search-dir=. --write ."
@@ -52,6 +52,9 @@
 		"typescript": "^4.0.0"
 	},
 	"dependencies": {
+		"normalize.css": "^8.0.1",
+		"papercss": "^1.8.3",
+		"read-vietnamese-number": "^1.8.1",
 		"sirv-cli": "^2.0.0"
 	}
 }

@@ -1,3 +1,18 @@
 body {
-	margin: 0;
+	padding: 5vw 0;
+}
+
+html {
+	scroll-behavior: smooth;
+
+	/* Fix Paper.css doesn't have background color */
+	background-color: var(--main-background);
+
+	/* Prevent content jumping */
+	scrollbar-gutter: stable;
+}
+
+* {
+	font-family: 'Mali', cursive !important; /* To override Paper.CSS style */
+	font-size: 18px;
 }
